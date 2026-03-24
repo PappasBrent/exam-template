@@ -146,7 +146,6 @@ set enum(start: multiple_choice.len() + short_response.len() + 1)
 
 if sys.inputs.at("type", default: "questions") == "questions" {
     for q in long_response {
-        pagebreak()
         enum.item(q.at("body"))
     }
 } else if sys.inputs.at("type", default: "questions") == "solutions" {
