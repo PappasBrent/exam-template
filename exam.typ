@@ -1,15 +1,15 @@
 #let exam(
     exam_title: "Sample Exam",
-    subtitle: none
-    , nrows: 3
-    , ncols: 3
-    , points_per_multiple_choice: 1
-    , points_per_short_response: 1
-    , points_per_long_response: 5
-    , multiple_choice: ()
-    , short_response: ()
-    , long_response: ()
-    , doc
+    subtitle: none,
+    nrows: 3,
+    ncols: 3,
+    points_per_multiple_choice: 1,
+    points_per_short_response: 1,
+    points_per_long_response: 5,
+    multiple_choice: (),
+    short_response: (),
+    long_response: (),
+    doc,
 ) = {
 
 set page(
@@ -34,30 +34,30 @@ if sys.inputs.at("type", default: "questions") == "questions" {
     let total_points            = multiple_choice_points + short_response_points + long_response_points
 
     table(
-        columns: (1fr, 1fr, 1fr, 1fr)
-        , align: center
-        , fill: (_, y) => { if calc.odd(y) { luma(200) } else { white } }
-        , stroke: (_, y) => {
+        columns: (1fr, 1fr, 1fr, 1fr),
+        align: center,
+        fill: (_, y) => { if calc.odd(y) { luma(200) } else { white } },
+        stroke: (_, y) => {
             if y == 0 {
                 (top: 2pt + black, bottom: 1pt + black)
             } else if y == 4 {
                 (bottom: 2pt + black) } else { none }
-        }
-        , table.header( [*Category*],       [*Points per question*],        [*Quantity*],                   [*Total points*])
-        ,               [Multiple choice],  [#points_per_multiple_choice],  [#multiple_choice.len()],       [#multiple_choice_points]
-        ,               [Short response],   [#points_per_short_response],   [#short_response.len()],        [#short_response_points]
-        ,               [Long response],    [#points_per_long_response],    [#long_response.len()],         [#long_response_points]
-        ,               [*Total*],          [],                             [*#total_nquestions*],            [*#total_points*]
+        },
+        table.header( [*Category*],       [*Points per question*],        [*Quantity*],                   [*Total points*]),
+                      [Multiple choice],  [#points_per_multiple_choice],  [#multiple_choice.len()],       [#multiple_choice_points],
+                      [Short response],   [#points_per_short_response],   [#short_response.len()],        [#short_response_points],
+                      [Long response],    [#points_per_long_response],    [#long_response.len()],         [#long_response_points],
+                      [*Total*],          [],                             [*#total_nquestions*],            [*#total_points*]
      )
 } else if sys.inputs.at("type", default: "questions") == "answer_sheet" {
     table(
-        columns: (auto, 1fr)
-        , align: left
-        , stroke: (x, y) => { if x == 1 { (bottom: 1pt + black) } }
-        , inset: (left: 0pt)
-        , row-gutter: 10pt
-        , [Name], []
-        , [Date], []
+        columns: (auto, 1fr),
+        align: left,
+        stroke: (x, y) => { if x == 1 { (bottom: 1pt + black) } },
+        inset: (left: 0pt),
+        row-gutter: 10pt,
+        [Name], [],
+        [Date], [],
     )
 }
 
@@ -121,11 +121,11 @@ if sys.inputs.at("type", default: "questions") == "questions" {
 
     /* Display answer matrix */
     table(
-        columns: range(ncols).map( _ => 1fr)
-        , align: left
-        , inset: (top: 10pt, bottom: 10pt)
-        , fill: (_, y) => { if calc.odd(y) { luma(200) } else { white } }
-        , ..(matrix.flatten())
+        columns: range(ncols).map( _ => 1fr),
+        align: left,
+        inset: (top: 10pt, bottom: 10pt),
+        fill: (_, y) => { if calc.odd(y) { luma(200) } else { white } },
+        ..(matrix.flatten()),
     )
 }
 
