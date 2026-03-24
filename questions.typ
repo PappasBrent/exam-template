@@ -5,6 +5,9 @@
     , subtitle: "Sample subtitle"
     , nrows: 2
     , ncols: 2
+    , points_per_multiple_choice: 1
+    , points_per_short_response: 1
+    , points_per_long_response: 5
     , multiple_choice: (
 
         (

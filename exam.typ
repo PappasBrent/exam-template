@@ -3,6 +3,9 @@
     subtitle: none
     , nrows: 3
     , ncols: 3
+    , points_per_multiple_choice: 1
+    , points_per_short_response: 1
+    , points_per_long_response: 5
     , multiple_choice: ()
     , short_response: ()
     , long_response: ()
@@ -24,8 +27,14 @@ title()
 if { subtitle != none } { subtitle }
 
 if sys.inputs.at("type", default: "questions") == "questions" {
+    let total_nquestions        = multiple_choice.len() + short_response.len() + long_response.len()
+    let multiple_choice_points  = multiple_choice.len() * points_per_multiple_choice
+    let short_response_points   = short_response.len()  * points_per_short_response
+    let long_response_points    = long_response.len()   * points_per_long_response
+    let total_points            = multiple_choice_points + short_response_points + long_response_points
+
     table(
-        columns: (1fr, 1fr)
+        columns: (1fr, 1fr, 1fr, 1fr)
         , align: center
         , fill: (_, y) => { if calc.odd(y) { luma(200) } else { white } }
         , stroke: (_, y) => {
@@ -34,14 +43,12 @@ if sys.inputs.at("type", default: "questions") == "questions" {
             } else if y == 4 {
                 (bottom: 2pt + black) } else { none }
         }
-        , table.header(
-            [*Category*], [*Quantity*]
-        )
-        , [Multiple choice],    [#multiple_choice.len()]
-        , [Short response],     [#short_response.len()]
-        , [Long response],      [#long_response.len()]
-        , [*Total*],            [#(multiple_choice.len() + short_response.len() + long_response.len())
-]    )
+        , table.header( [*Category*],       [*Points per question*],        [*Quantity*],                   [*Total points*])
+        ,               [Multiple choice],  [#points_per_multiple_choice],  [#multiple_choice.len()],       [#multiple_choice_points]
+        ,               [Short response],   [#points_per_short_response],   [#short_response.len()],        [#short_response_points]
+        ,               [Long response],    [#points_per_long_response],    [#long_response.len()],         [#long_response_points]
+        ,               [*Total*],          [],                             [*#total_nquestions*],            [*#total_points*]
+     )
 } else if sys.inputs.at("type", default: "questions") == "answer_sheet" {
     table(
         columns: (auto, 1fr)
