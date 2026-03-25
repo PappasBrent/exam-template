@@ -65,6 +65,7 @@ if multiple_choice.len() > 0 [ = Multiple choice ]
 
 if sys.inputs.at("type", default: "questions") == "questions" {
     for q in multiple_choice {
+        parbreak()
         enum.item(box[
             #q.at("body")
             #set enum(numbering: "A.")
@@ -135,14 +136,17 @@ set enum(start: multiple_choice.len() + 1)
 
 if sys.inputs.at("type", default: "questions") == "questions" {
     for q in short_response {
+        parbreak()
         enum.item(q.at("body"))
     }
 } else if sys.inputs.at("type", default: "questions") == "solutions" {
     for q in short_response {
+        parbreak()
         enum.item(q.at("solution"))
     }
 } else if sys.inputs.at("type", default: "questions") == "answer_sheet" {
     for q in short_response {
+        parbreak()
         enum.item(rect(width: 100%, height: 65pt)[])
     }
 }
@@ -153,14 +157,17 @@ set enum(start: multiple_choice.len() + short_response.len() + 1)
 
 if sys.inputs.at("type", default: "questions") == "questions" {
     for q in long_response {
+        parbreak()
         enum.item(q.at("body"))
     }
 } else if sys.inputs.at("type", default: "questions") == "solutions" {
     for q in long_response {
+        parbreak()
         enum.item(q.at("solution"))
     }
 } else if sys.inputs.at("type", default: "questions") == "answer_sheet" {
     for q in long_response {
+        parbreak()
         enum.item(rect(width: 100%, height: 95%)[])
     }
 }
