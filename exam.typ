@@ -142,7 +142,7 @@ if sys.inputs.at("type", default: "questions") == "questions" {
 } else if sys.inputs.at("type", default: "questions") == "solutions" {
     for q in short_response {
         parbreak()
-        enum.item(box(q.at("solution")))
+        enum.item(rect(width: 100%, height: auto, q.at("solution")))
     }
 } else if sys.inputs.at("type", default: "questions") == "answer_sheet" {
     for q in short_response {
@@ -163,7 +163,7 @@ if sys.inputs.at("type", default: "questions") == "questions" {
 } else if sys.inputs.at("type", default: "questions") == "solutions" {
     for q in long_response {
         parbreak()
-        enum.item(box(q.at("solution")))
+        enum.item(rect(width: 100%, height: auto, q.at("solution")))
     }
 } else if sys.inputs.at("type", default: "questions") == "answer_sheet" {
     for q in long_response {
