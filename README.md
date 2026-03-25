@@ -87,3 +87,19 @@ Short and long response questions have the following form
     , solution: [ ]
 )
 ```
+
+## Screenshots of generated PDFs
+
+Questions
+
+![Questions](screenshots/questions.png)
+
+Solutions
+
+![Solutions](screenshots/solutions.png)
+
+Answer sheet (2 pages)
+
+![Answer sheet page 1](screenshots/answer_sheet_1.png)
+
+![Answer sheet page 2](screenshots/answer_sheet_2.png)
