@@ -1,14 +1,14 @@
 #import "exam.typ": exam
 
 #show: exam.with(
-    exam_title: "Sample exam"
-    , subtitle: "Sample subtitle"
-    , nrows: 2
-    , ncols: 2
-    , points_per_multiple_choice: 1
-    , points_per_short_response: 1
-    , points_per_long_response: 5
-    , multiple_choice: (
+    exam_title: "Sample exam",
+    subtitle: "Sample subtitle", 
+    nrows: 2, 
+    ncols: 2, 
+    points_per_multiple_choice: 1, 
+    points_per_short_response: 1, 
+    points_per_long_response: 5, 
+    multiple_choice: (
 
         (
             body: [
@@ -39,9 +39,9 @@
             , solution: "A"
         ),
 
-    )
+    ),
 
-    , short_response: (
+    short_response: (
 
         (
             body: [
@@ -56,9 +56,9 @@
             ]
         ),
 
-    )
+    ),
 
-    , long_response: (
+    long_response: (
 
         (
             body: [Write a hello world program in C.]
@@ -72,9 +72,7 @@
                 ```
 
             ]
-        )
-        
-        ,
+        ),
 
     )
 
