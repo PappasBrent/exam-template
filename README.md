@@ -46,6 +46,9 @@ Exams consist of these parts:
     - An optional subtitle.
     - The number of rows in the answer matrix for multiple choice questions.
     - The number of columns in the answer matrix for multiple choice questions.
+    - The number of points per multiple choice question.
+    - The number of points per short response question.
+    - The number of points per long response question.
     - A list of multiple choice questions.
     - A list of short response questions.
     - A list of long response questions.
